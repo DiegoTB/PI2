@@ -5,8 +5,11 @@
 package pi2.curriculo.controllers;
 
 import pi2.curriculo.dao.CurriculoDao;
-import pi2.curriculo.dao.CurriculoDaoImp;        
+import pi2.curriculo.dao.CurriculoDaoImp;  
+import pi2.curriculo.dao.UniversidadeDao;
+import pi2.curriculo.dao.UniversidadeDaoImp;
 import pi2.curriculo.models.Curriculo;
+import pi2.curriculo.models.Universidade;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -22,11 +25,18 @@ import javax.faces.model.ListDataModel;
 public class CurriculoController {
     private Curriculo curriculo;
     private DataModel listaCurriculos;
+    private DataModel listaUniversidades;
     
     public DataModel getListarCurriculos(){
         List<Curriculo> lista = new CurriculoDaoImp().list();
         listaCurriculos = new ListDataModel(lista);
         return listaCurriculos;        
+    }
+    
+    public DataModel getListarUniversidades(){
+        List<Universidade> lista = new UniversidadeDaoImp().list();
+        listaUniversidades = new ListDataModel(lista);
+        return listaUniversidades;
     }
     
     public Curriculo getCurriculo(){

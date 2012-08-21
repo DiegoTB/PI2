@@ -13,7 +13,13 @@
                 <f:facet name="header">
                     <h:outputText value="obs"/>                    
                 </f:facet>
-                <h:outputText value="#{curriculo.obs}"/>
+                <h:outputText value="#{curriculo.obs}"/>                
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Universidade"/> 
+                </f:facet>
+                <h:outputText value="#{curriculo.universidade.nome}"/>
             </h:column>
         </h:dataTable> 
         <h:form>

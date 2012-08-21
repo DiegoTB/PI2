@@ -1,14 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Novo Curriculo</title>
     </h:head>
     <h:body>
         <h1>Gerenciador de Curriculos</h1>
         <h:form>
-            Obs:<h:inputText value="#{curriculoController.curriculo.obs}"/>
+            Obs:<h:inputText value="#{curriculoController.curriculo.obs}"/><br/>
+            Universidade: <h:selectOneMenu value="#{curriculoController.curriculo.uni_id}">
+                <f:selectItems value="#{curriculoController.listarUniversidades}" var="universidade"
+                               itemLabel="#{universidade.nome}" itemValue="#{universidade.id.toString()}"/>
+            </h:selectOneMenu><br/>
             <h:commandButton action="#{curriculoController.criarCurriculo()}" value="Inserir novo Curriculo"/>
         </h:form>
     </h:body>

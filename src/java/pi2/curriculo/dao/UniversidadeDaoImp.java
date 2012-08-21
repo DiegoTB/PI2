@@ -4,7 +4,7 @@
  */
 package pi2.curriculo.dao;
 
-import pi2.curriculo.models.Curriculo;
+import pi2.curriculo.models.Universidade;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,50 +15,49 @@ import org.hibernate.Transaction;
  *
  * @author alezonez
  */
-public class CurriculoDaoImp implements CurriculoDao{
-
+public class UniversidadeDaoImp implements UniversidadeDao{
+    
     @Override
-    public Curriculo getCurriculo(int id) {
+    public Universidade getUniversidade(int id) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();        
-        return (Curriculo) session.load(Curriculo.class, id);
+        return (Universidade) session.load(Universidade.class, id);
     }
-
+    
     @Override
-    public List<Curriculo> list() {
+    public List<Universidade> list() {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();      
         Transaction t = session.beginTransaction();
-        List lista = session.createQuery("from Curriculo").list();
+        List lista = session.createQuery("from Universidade").list();
         t.commit();
         return lista;        
     }
-
+    
     @Override
-    public void remove(Curriculo curriculo) {
+    public void remove(Universidade universidade) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();      
         Transaction t = session.beginTransaction();
-        session.delete(curriculo);
+        session.delete(universidade);
         t.commit();        
-    }
-
-    @Override
-    public void save(Curriculo curriculo) {
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();      
-        Transaction t = session.beginTransaction();
-        session.save(curriculo);
-        t.commit();        
-    }
-
-    @Override
-    public void update(Curriculo curriculo) {
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();      
-        Transaction t = session.beginTransaction();
-        session.update(curriculo);
-        t.commit();
     }
     
+    @Override
+    public void save(Universidade universidade) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();      
+        Transaction t = session.beginTransaction();
+        session.save(universidade);
+        t.commit();        
+    }
+    
+    @Override
+    public void update(Universidade universidade) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();      
+        Transaction t = session.beginTransaction();
+        session.update(universidade);
+        t.commit();
+    }
 }

@@ -6,6 +6,9 @@
       <id name="id" type="int" column="ID">
           <generator class="assigned"/>
       </id>
+      <property name="uni_id">
+          <column name="uni_id"/>
+      </property>
       <property name="obs">
           <column name="obs"/>
       </property>
