@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface CurriculoDao {
     public void save (Curriculo curriculo);
-    public Curriculo getCurriculo(Integer id);
+    public Curriculo getCurriculo(int id);
     public List<Curriculo> list();
     public void remove(Curriculo curriculo);
     public void update(Curriculo curriculo);

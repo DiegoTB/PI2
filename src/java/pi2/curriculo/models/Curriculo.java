@@ -1,10 +1,5 @@
 package pi2.curriculo.models;
 
-import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /*
  * To change this template, choose Tools | Templates
@@ -16,26 +11,19 @@ import javax.persistence.Table;
  * @author alezonez
  */
 
-@Entity
-@Table(name = "curriculos")
-
 
 public class Curriculo {
     
     public Curriculo(){}
-    
-    @Id
-    @Column(name = "id")
-    Integer id;
-    
-    @Column(name = "obs")
+
+    int id; 
     String obs;
     
-    public Integer getId(){
+    public int getId(){
         return id;
     }
     
-    private void setId(Integer id){
+    private void setId(int id){
         this.id = id;
     }
     

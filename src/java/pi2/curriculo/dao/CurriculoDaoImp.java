@@ -7,6 +7,8 @@ package pi2.curriculo.dao;
 import pi2.curriculo.models.Curriculo;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.Transaction;
 
 /**
@@ -16,14 +18,16 @@ import org.hibernate.Transaction;
 public class CurriculoDaoImp implements CurriculoDao{
 
     @Override
-    public Curriculo getCurriculo(Integer id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+    public Curriculo getCurriculo(int id) {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session =sessionFactory.openSession();        
         return (Curriculo) session.load(Curriculo.class, id);
     }
 
     @Override
     public List<Curriculo> list() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();      
         Transaction t = session.beginTransaction();
         List lista = session.createQuery("from Curriculo").list();
         t.commit();
@@ -32,23 +36,29 @@ public class CurriculoDaoImp implements CurriculoDao{
 
     @Override
     public void remove(Curriculo curriculo) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        throw new UnsupportedOperationException("Not supported yet.");
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();      
+        Transaction t = session.beginTransaction();
+        session.delete(curriculo);
+        t.commit();        
     }
 
     @Override
     public void save(Curriculo curriculo) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();      
         Transaction t = session.beginTransaction();
         session.save(curriculo);
-        t.commit();
-        throw new UnsupportedOperationException("Not supported yet.");
+        t.commit();        
     }
 
     @Override
     public void update(Curriculo curriculo) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        throw new UnsupportedOperationException("Not supported yet.");
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();      
+        Transaction t = session.beginTransaction();
+        session.update(curriculo);
+        t.commit();
     }
     
 }
